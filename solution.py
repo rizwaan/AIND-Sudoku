@@ -61,8 +61,14 @@ def eliminate(values):
     dict
         The values dictionary with the assigned values eliminated from peers
     """
-    # TODO: Copy your code from the classroom to complete this function
-    raise NotImplementedError
+    done_boxes = [box for box in boxes if len(values[box])==1] 
+    
+    for box in done_boxes:
+        done_digit=values[box]
+        for peer in peers[box]:
+            values[peer]=values[peer].replace(done_digit,'')
+    
+    return values
 
 
 def only_choice(values):
